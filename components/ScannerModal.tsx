@@ -21,9 +21,9 @@ export default function ScannerModal({ onClose }: ScannerModalProps) {
       const urlString = result[0].rawValue;
       try {
         const url = new URL(urlString);
-        // We expect the URL to be our own /q/{slug}
-        if (url.pathname.startsWith('/q/')) {
-          const extractedSlug = url.pathname.replace('/q/', '');
+        // Extract slug assuming format is domain.com/{slug}
+        if (!url.pathname.startsWith('/edit') && !url.pathname.startsWith('/api') && url.pathname.length > 1) {
+          const extractedSlug = url.pathname.replace('/', '');
           setScannedSlug(extractedSlug);
         } else {
           setError("This is not a valid Dynamic QR Studio code.");
