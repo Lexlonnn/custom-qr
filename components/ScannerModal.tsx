@@ -86,7 +86,6 @@ export default function ScannerModal({ onClose }: ScannerModalProps) {
                   onScan={handleScan}
                   formats={['qr_code']}
                   components={{
-                    audio: false,
                     onOff: true,
                     torch: true,
                     zoom: true,
